@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :author_id, :value => current_user.id %>
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>

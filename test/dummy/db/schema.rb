@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325215703) do
+ActiveRecord::Schema.define(version: 20160326004935) do
 
   create_table "picco_blog_comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 20160325215703) do
     t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "author_id"
   end
+
+  add_index "picco_blog_posts", ["author_id"], name: "index_picco_blog_posts_on_author_id"
 
 end

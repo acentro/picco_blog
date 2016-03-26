@@ -10,6 +10,13 @@
   <%= @post.text %>
 </p>
 
+<p>
+  <b>Author:</b>
+  <%= @post.author.name %>
+</p>
+
+<hr />
+
 <h3>Comments</h3>
 <%= render @post.comments %>
 
