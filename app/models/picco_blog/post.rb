@@ -10,7 +10,7 @@ module PiccoBlog
     private
 
       def set_author
-        self.author = PiccoBlog.author_class.constantize.find(author_id)
+        self.author = PiccoBlog.author_class.find(author_id)
       end
   end
 end
