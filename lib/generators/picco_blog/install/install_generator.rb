@@ -1,6 +1,6 @@
-module SimpleBlog
+module PiccoBlog
   module Generators
-    class InstallGenerator < Rails::Generators::NamedBase
+    class InstallGenerator < Rails::Generators::Base
       desc "Install PiccoBlog in your application"
       source_root File.expand_path('../templates', __FILE__)
 
