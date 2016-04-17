@@ -10,7 +10,7 @@ module PiccoBlog
 
       def run_migrations
         rake "picco_blog:install:migrations"
-        #rake "acts_as_taggable_on_engine:install:migrations"
+        rake "acts_as_taggable_on_engine:install:migrations"
       end
     end
   end

@@ -2,16 +2,25 @@ PiccoBlog.setup do |config|
 
   # overwrite this with the user model that will be tied to each blog post
   # defaults to User model
-
   config.author_class = "User"
-  
-  # overwrite this with the twitter @twitter_site_name
-  # for more info please check: https://dev.twitter.com/cards/getting-started
 
-  # config.twitter_site_name = ""
+  # What kind of comments do you want to add to your blog ? (:active_record or :no)
+  # Disqus comments will be added in future
+  config.include_comments = :active_record
 
-  # overwrite this with the facebook app id
-  # for more info please check: https://developers.facebook.com/docs/opengraph/using-objects
+  # Should there be a share bar on every post ?
+  config.include_share_bar = true
 
-  # config.fb_app_id = ""  
+  # No. of posts to show per page
+  config.posts_per_page = 5
+
+  # Set the layout named here that PiccoBlog::PostsController will use
+  config.layout = "application"
+
+  # List of states that will be visible to the public
+  config.active_states = [:published]
+
+  # List of states that will hide the posts from the public.
+  config.hidden_states = [:draft, :archive]
+
 end
