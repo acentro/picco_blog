@@ -1,5 +1,5 @@
 module PiccoBlog
   class ApplicationController < ActionController::Base
-    layout "application"
+    layout PiccoBlog.layout
   end
 end
