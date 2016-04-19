@@ -25,14 +25,5 @@ module PiccoBlog
 
   class Engine < ::Rails::Engine
     isolate_namespace PiccoBlog
-
-    # This is what I was trying to figure out
-    # def self.config(&block)
-    #   @@config ||= PiccoBlog::Configuration.new
-
-    #   yield @@config if block
-
-    #   return @@config
-    # end
   end
 end
