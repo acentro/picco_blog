@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.4"
   s.add_dependency 'acts-as-taggable-on'
+  s.add_dependency 'kaminari'
 
   s.add_development_dependency "sqlite3"
 end

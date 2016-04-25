@@ -1,5 +1,5 @@
 require 'acts-as-taggable-on'
-#require "kaminari"
+require "kaminari"
 
 module PiccoBlog
 
