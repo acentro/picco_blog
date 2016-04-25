@@ -1,4 +1,4 @@
-#require 'acts-as-taggable-on'
+require 'acts-as-taggable-on'
 #require "kaminari"
 
 module PiccoBlog
@@ -7,9 +7,9 @@ module PiccoBlog
     mattr_accessor :author_class, :include_comments, :include_share_bar
     mattr_accessor :posts_per_page, :layout, :active_states, :hidden_states
 
-    def self.author_class
-      @@author_class.constantize
-    end
+    # def self.author_class
+    #   @@author_class.constantize
+    # end
   end
 
   self.include_comments = ""

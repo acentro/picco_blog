@@ -1,5 +1,7 @@
 module PiccoBlog
   class Post < ActiveRecord::Base
+    acts_as_taggable_on :tags
+
     attr_accessor :author_id
 
     belongs_to :author, class_name: PiccoBlog.author_class.to_s
@@ -10,7 +12,7 @@ module PiccoBlog
     private
 
       def set_author
-        self.author = PiccoBlog.author_class.find(author_id)
+        self.author = PiccoBlog.author_class.constantize.find(author_id)
       end
   end
 end
