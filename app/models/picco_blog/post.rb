@@ -1,5 +1,6 @@
 module PiccoBlog
   class Post < ActiveRecord::Base
+    include Slugalicious
     acts_as_taggable_on :tags
     slugged :title
 
