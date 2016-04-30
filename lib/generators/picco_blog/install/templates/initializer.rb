@@ -23,4 +23,7 @@ PiccoBlog.setup do |config|
   # List of states that will hide the posts from the public.
   config.hidden_states = [:draft, :archive]
 
+  # No. of recent posts to show in blog sidebar
+  config.recent_posts = 8
+
 end

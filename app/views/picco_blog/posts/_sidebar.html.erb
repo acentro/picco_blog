@@ -1,0 +1,15 @@
+<div id="picco_blog_sidebar">
+  <h4>Categories</h4>
+
+  <h4>Recent Posts</h4>
+
+  <div>
+    <% @recent_posts.each do |post| %>
+      <p>
+        <%= link_to post.title, post_path(post.id) %> 
+        <em>Posted on <%= created_date_display(post) %></em>
+      </p>
+    <% end %>
+  </div>
+
+</div>
