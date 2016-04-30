@@ -7,10 +7,10 @@ require "picco_blog/version"
 Gem::Specification.new do |s|
   s.name        = "picco_blog"
   s.version     = PiccoBlog::VERSION
-  s.authors     = ["]"]
+  s.authors     = ["Brandon Bango"]
   s.email       = ["brandon@acentrosys.com"]
   s.homepage    = "http://www.acentrosys.com"
-  s.summary     = "Basic blog gem for your existing app or site."
+  s.summary     = "PiccoBlog is a simple and light weight Ruby on Rails blog engine."
   #s.description = "TODO: Description of PiccoBlog."
   s.license     = "MIT"
 
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.4"
   s.add_dependency 'acts-as-taggable-on'
   s.add_dependency 'kaminari'
+  s.add_dependency 'slugalicious'
 
   s.add_development_dependency "sqlite3"
 end

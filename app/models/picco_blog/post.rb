@@ -1,6 +1,9 @@
 module PiccoBlog
   class Post < ActiveRecord::Base
     acts_as_taggable_on :tags
+    slugged :title
+
+    paginates_per PiccoBlog.posts_per_page
 
     attr_accessor :author_id
 
