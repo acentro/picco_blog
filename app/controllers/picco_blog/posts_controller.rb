@@ -3,6 +3,7 @@ require_dependency "picco_blog/application_controller"
 module PiccoBlog
   class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_recent_posts, only: [:index, :show]
 
     # GET /posts
     def index
@@ -52,6 +53,10 @@ module PiccoBlog
       # Use callbacks to share common setup or constraints between actions.
       def set_post
         @post = Post.find(params[:id])
+      end
+
+      def set_recent_posts
+        @recent_posts = Post.last(PiccoBlog.recent_posts).reverse;
       end
 
       # Only allow a trusted parameter "white list" through.
