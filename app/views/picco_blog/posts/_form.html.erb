@@ -14,16 +14,13 @@
   <%= f.hidden_field :author_id, :value => current_user.id %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :placeholder => "Title" %> <br/>
   </div>
   <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
+    <%= f.text_area :text, :placeholder => "Body" %> <br/>
   </div>
   <div class="field">
-    <%= f.label :tag_list %><br>
-    <%= f.text_field :tag_list %>
+    <%= f.text_field :tag_list, :placeholder => "Tags" %> <br/>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -21,6 +21,11 @@
     <%= @post.tag_list %>
   </p>
 
+  <% if PiccoBlog.include_share_bar %>
+    <hr />
+    <p>Share buttons here</p>
+  <% end -%>
+
   <% if PiccoBlog.include_comments == :active_record %>
     <hr />
 
