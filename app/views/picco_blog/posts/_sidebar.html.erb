@@ -6,7 +6,7 @@
   <div>
     <% @recent_posts.each do |post| %>
       <p>
-        <%= link_to post.title, post_path(post.id) %> 
+        <%= link_to post.title, post_path(post) %> 
         <em>Posted on <%= created_date_display(post) %></em>
       </p>
     <% end %>
