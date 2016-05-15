@@ -17,6 +17,9 @@ module PiccoBlog
 
     # GET /posts/1
     def show
+      if request.path != post_path(@post)
+        redirect_to @post, status: :moved_permanently
+      end
     end
 
     # GET /posts/new
@@ -57,7 +60,7 @@ module PiccoBlog
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = Post.find(params[:id])
+        @post = Post.friendly.find(params[:id])
       end
 
       def set_recent_posts

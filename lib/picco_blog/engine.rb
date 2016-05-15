@@ -1,6 +1,6 @@
 require 'acts-as-taggable-on'
 require "kaminari"
-require "slugalicious"
+require "friendly_id"
 
 module PiccoBlog
 

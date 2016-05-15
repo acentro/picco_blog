@@ -1,8 +1,8 @@
 module PiccoBlog
   class Post < ActiveRecord::Base
-    include Slugalicious
+    extend FriendlyId
+    friendly_id :title, use: [:slugged, :history]
     acts_as_taggable_on :tags
-    slugged :title
 
     paginates_per PiccoBlog.posts_per_page
 

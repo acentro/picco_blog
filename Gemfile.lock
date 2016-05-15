@@ -3,9 +3,9 @@ PATH
   specs:
     picco_blog (0.0.1)
       acts-as-taggable-on
+      friendly_id (~> 5.1.0)
       kaminari
       rails (~> 4.2.4)
-      slugalicious
 
 GEM
   remote: https://rubygems.org/
@@ -49,8 +49,10 @@ GEM
       activerecord (>= 3.2, < 5)
     arel (6.0.3)
     builder (3.2.2)
-    concurrent-ruby (1.0.1)
+    concurrent-ruby (1.0.2)
     erubis (2.7.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -97,9 +99,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (11.1.2)
-    slugalicious (2.1.0)
-      rails (>= 4.0)
-      stringex
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -108,7 +107,6 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.11)
-    stringex (2.6.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
