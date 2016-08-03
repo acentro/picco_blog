@@ -13,6 +13,8 @@ module PiccoBlog
 
     before_validation :set_author
 
+    scope :active, lambda { where(state:  PiccoBlog.active_states ) }
+
     private
 
       def set_author
