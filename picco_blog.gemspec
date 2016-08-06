@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'kaminari'
   s.add_dependency 'friendly_id', '~> 5.1.0'
   s.add_dependency 'medium-editor-rails'
+  s.add_dependency 'redcarpet'
 
   s.add_development_dependency "sqlite3"
 end
