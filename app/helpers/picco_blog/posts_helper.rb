@@ -33,7 +33,8 @@ module PiccoBlog
         fenced_code_blocks: true,
         lax_html_blocks: true,
         strikethrough: true,
-        superscript: true
+        superscript: true,
+        tables: true
       }
 
       Redcarpet::Markdown.new(renderer, options).render(text).html_safe
