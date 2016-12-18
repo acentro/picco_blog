@@ -24,7 +24,7 @@ module PiccoBlog
     end
 
     def markdown(text)
-      renderer = Redcarpet::Render::HTML.new(hard_wrap: true, filter_html: true)
+      renderer = Redcarpet::Render::HTML.new(hard_wrap: true, filter_html: false)
 
       options = {
         autolink: true,
