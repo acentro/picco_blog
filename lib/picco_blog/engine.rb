@@ -30,5 +30,10 @@ module PiccoBlog
 
   class Engine < ::Rails::Engine
     isolate_namespace PiccoBlog
+    config.to_prepare do
+      # Make the implementing application's helpers available to the engine.
+      # This is required for the overriding of engine views and helpers to work correctly.
+      PiccoBlog::ApplicationController.helper Rails.application.helpers
+    end
   end
 end
