@@ -21,9 +21,12 @@ PiccoBlog.setup do |config|
   config.active_states = [:published]
 
   # List of states that will hide the posts from the public.
-  config.hidden_states = [:draft, :archive]
+  config.hidden_states = [:hidden]
 
   # No. of recent posts to show in blog sidebar
   config.recent_posts = 8
+
+  # How do you want to handle the display of tags? (:list or :cloud)
+  config.post_tagging = :list
 
 end
