@@ -11,9 +11,11 @@ module PiccoBlog
     belongs_to :author, class_name: PiccoBlog.author_class.to_s
     has_many :comments
 
+    validates :title, :text, :state, presence: true
+
     before_validation :set_author
 
-    scope :active, lambda { where(state:  PiccoBlog.active_states ) }
+    enum state: [:visible, :hidden]
 
     private
 

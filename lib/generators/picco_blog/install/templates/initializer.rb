@@ -17,12 +17,6 @@ PiccoBlog.setup do |config|
   # Set the layout named here that PiccoBlog::PostsController will use
   config.layout = "application"
 
-  # List of states that will be visible to the public
-  config.active_states = [:published]
-
-  # List of states that will hide the posts from the public.
-  config.hidden_states = [:hidden]
-
   # No. of recent posts to show in blog sidebar
   config.recent_posts = 8
 
