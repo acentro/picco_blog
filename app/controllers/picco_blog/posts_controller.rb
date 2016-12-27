@@ -8,9 +8,9 @@ module PiccoBlog
     # GET /posts
     def index
       if params[:tag]
-        @posts = Post.tagged_with(params[:tag]).order('id desc')
+        @posts = Post.visible.tagged_with(params[:tag]).order('id desc')
       else
-        @posts = Post.all.order('id desc')
+        @posts = Post.visible.order('id desc')
       end
       #@posts = @posts.order(created_at: :desc).paginate(page:params[:page], per_page: PiccoBlog.posts_per_page )
     end
