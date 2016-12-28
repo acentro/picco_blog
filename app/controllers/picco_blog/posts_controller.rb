@@ -64,7 +64,7 @@ module PiccoBlog
       end
 
       def set_recent_posts
-        @recent_posts = Post.last(PiccoBlog.recent_posts).reverse;
+        @recent_posts = Post.visible.last(PiccoBlog.recent_posts).reverse;
       end
 
       # Only allow a trusted parameter "white list" through.
