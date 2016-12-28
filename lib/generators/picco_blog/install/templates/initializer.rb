@@ -4,6 +4,13 @@ PiccoBlog.setup do |config|
   # defaults to User model
   config.author_class = "User"
 
+  # Will your blog have member only posts? 
+  config.members_only = false
+
+  # If true, overwrite this with the method name on the member class
+  # method name defaults to "members_only" and should return boolean (true/false)
+  config.members_only_method = "members_only"
+
   # What kind of comments do you want to add to your blog ? (:active_record or :no)
   # Disqus comments will be added in future
   config.include_comments = :active_record

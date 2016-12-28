@@ -41,5 +41,9 @@ module PiccoBlog
       Redcarpet::Markdown.new(renderer, options).render(text).html_safe
     end
 
+    def members_only_check(user)
+      user.send(PiccoBlog.members_only_method)
+    end
+
   end
 end

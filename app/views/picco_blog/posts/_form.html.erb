@@ -25,6 +25,11 @@
   <div class="field">
     <%= f.select :state, PiccoBlog::Post.states.keys.to_a, { include_blank: "Select" } %>
   </div>
+  <% if PiccoBlog.members_only %>
+    <div class="field">
+      <%= f.check_box :members_only %>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.text_field :tag_list, :placeholder => "Tags" %> <br/>
   </div>

@@ -6,7 +6,7 @@ module PiccoBlog
 
   class << self
     mattr_accessor :author_class, :include_comments, :include_share_bar, :recent_posts
-    mattr_accessor :posts_per_page, :layout, :post_tagging 
+    mattr_accessor :posts_per_page, :layout, :post_tagging, :members_only, :members_only_method 
 
     # def self.author_class
     #   @@author_class.constantize
@@ -19,6 +19,8 @@ module PiccoBlog
   self.layout = ""
   self.recent_posts = ""
   self.post_tagging = ""
+  self.members_only = ""
+  self.members_only_method = ""
 
   def self.setup(&block)
     yield self
