@@ -19,3 +19,7 @@ $('textarea.picco_blog_editor').each(function() {
     });
     simplemde.render(); 
 });
+
+$("#post_tag_list").tagit({
+    availableTags: available_tags
+});

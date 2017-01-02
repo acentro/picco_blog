@@ -3,6 +3,7 @@ require 'uri'
 
 module PiccoBlog
   module PostsHelper
+    include ActsAsTaggableOn::TagsHelper
 
     def created_date_display(post, format="")
       format = "%m/%d/%Y" if format.blank?

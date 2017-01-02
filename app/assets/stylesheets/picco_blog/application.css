@@ -12,4 +12,6 @@
  *
  *= require ./posts
  *= require ./simplemde.min
+ *= require ./jquery.tagit
+ *= require ./tagit.ui-zendesk
  */
