@@ -1,4 +1,5 @@
 require 'redcarpet'
+require 'uri'
 
 module PiccoBlog
   module PostsHelper
@@ -39,6 +40,14 @@ module PiccoBlog
       }
 
       Redcarpet::Markdown.new(renderer, options).render(text).html_safe
+    end
+
+    def post_title_encode(post)
+      URI.encode(post.title) if post
+    end
+
+    def post_url_encode(post)
+      URI.encode(post_url(post)) if post
     end
 
     def members_only_check(user)

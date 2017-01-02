@@ -31,7 +31,7 @@
 
   <% if PiccoBlog.include_share_bar %>
     <hr />
-    <p>Share buttons here</p>
+    <%= render "sharebuttons", :post => @post %>
   <% end -%>
 
   <% if PiccoBlog.include_comments == :active_record %>
