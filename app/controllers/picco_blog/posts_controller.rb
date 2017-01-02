@@ -4,10 +4,11 @@ module PiccoBlog
   class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :set_recent_posts, only: [:index, :show]
+    before_action :set_tags_all, only: [:create, :edit, :index, :show]
 
     # GET /posts
     def index
-      if params[:tag]
+      if params[:tag].present?
         @posts = Post.visible.tagged_with(params[:tag]).order('id desc')
       else
         @posts = Post.visible.order('id desc')
@@ -20,6 +21,7 @@ module PiccoBlog
       if request.path != post_path(@post)
         redirect_to @post, status: :moved_permanently
       end
+      @title = @post.title
     end
 
     # GET /posts/new
@@ -65,6 +67,10 @@ module PiccoBlog
 
       def set_recent_posts
         @recent_posts = Post.visible.last(PiccoBlog.recent_posts).reverse;
+      end
+
+      def set_tags_all
+        @available_tags = ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'tags').collect { |tagging| "#{tagging.tag.name}" }.uniq
       end
 
       # Only allow a trusted parameter "white list" through.

@@ -24,10 +24,12 @@
     <%= @post.author.name %>
   </p>
 
-  <p>
-    <b>Tag List:</b>
-    <%= @post.tag_list %>
-  </p>
+  <% if @post.tag_list.any? %>
+    <p>
+      <b>Tag List:</b>
+      <%= linked_tag_list(@post.tag_list) %>
+    </p>
+  <% end -%>
 
   <% if PiccoBlog.include_share_bar %>
     <hr />

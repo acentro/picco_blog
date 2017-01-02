@@ -11,4 +11,5 @@
 // about supported directives.
 //
 //= require ./simplemde.min
+//= require ./tag-it.min
 //= require ./posts

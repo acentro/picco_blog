@@ -3,6 +3,7 @@ require 'uri'
 
 module PiccoBlog
   module PostsHelper
+    include ActsAsTaggableOn::TagsHelper
 
     def created_date_display(post, format="")
       format = "%m/%d/%Y" if format.blank?
@@ -52,6 +53,12 @@ module PiccoBlog
 
     def members_only_check(user)
       user.send(PiccoBlog.members_only_method)
+    end
+
+    def linked_tag_list(tag_list)
+      "" unless tag_list
+
+      tag_list.map{|tag| link_to tag, tagged_url(:tag => tag) }.join(", ").html_safe
     end
 
   end

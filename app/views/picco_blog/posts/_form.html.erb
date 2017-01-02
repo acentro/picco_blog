@@ -31,9 +31,13 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.text_field :tag_list, :placeholder => "Tags" %> <br/>
+    <%= f.text_field :tag_list %> <br/>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  var available_tags = <%= @available_tags %>
+</script>
