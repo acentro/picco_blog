@@ -1,6 +1,13 @@
 <div id="picco_blog_sidebar">
   <h4>Categories</h4>
 
+  <div>
+    <% @available_tags.any? %>
+      <% @available_tags.each do |tag| %>
+        <p><%= link_to tag, tagged_url(:tag => tag) %></p>
+    <% end %>
+  </div>
+
   <h4>Recent Posts</h4>
 
   <div>
