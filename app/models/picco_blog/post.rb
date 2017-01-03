@@ -3,6 +3,7 @@ module PiccoBlog
     extend FriendlyId
     friendly_id :title, use: [:slugged, :history]
     acts_as_taggable_on :tags
+    dragonfly_accessor :featured_image
 
     paginates_per PiccoBlog.posts_per_page
 
@@ -12,6 +13,8 @@ module PiccoBlog
     has_many :comments
 
     validates :title, :text, :state, presence: true
+    validates_property :format, of: :featured_image, in: [:jpeg, :jpg, :png], case_sensitive: false,
+                        message: "should be either .jpeg, .jpg, .png", if: :featured_image_changed?
 
     before_validation :set_author
 

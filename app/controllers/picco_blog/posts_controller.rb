@@ -75,7 +75,7 @@ module PiccoBlog
 
       # Only allow a trusted parameter "white list" through.
       def post_params
-        params.require(:post).permit(:title, :text, :author_id, :tag_list, :excerpt, :state, :members_only)
+        params.require(:post).permit(:title, :text, :author_id, :tag_list, :excerpt, :state, :members_only, :featured_image)
       end
   end
 end

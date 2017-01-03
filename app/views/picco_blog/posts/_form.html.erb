@@ -31,7 +31,14 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.text_field :tag_list %> <br/>
+    <%= f.text_field :tag_list, value: @post.tag_list.to_s %> <br/>
+  </div>
+  <div class="field">
+    <% if f.object.featured_image_stored? %>
+      <%= image_tag f.object.featured_image.thumb('200x100').url, :class => "mb16" %>
+    <% end %>
+
+    <%= f.file_field :featured_image %>
   </div>
   <div class="actions">
     <%= f.submit %>
