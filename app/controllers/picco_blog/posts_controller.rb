@@ -10,6 +10,8 @@ module PiccoBlog
     def index
       if params[:tag].present?
         @posts = Post.visible.tagged_with(params[:tag]).order('id desc')
+      elsif params[:search].present?
+        @posts = Post.visible.search(params[:search]).order("id desc")
       else
         @posts = Post.visible.order('id desc')
       end

@@ -1,4 +1,10 @@
 <div id="picco_blog_sidebar">
+  <h4>Search Blog</h4>
+
+  <%= form_tag(posts_path, :method => "get", id: "search-form", enforce_utf8: false) do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+  <% end %>
+
   <h4>Categories</h4>
 
   <div>

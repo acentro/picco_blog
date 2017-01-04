@@ -22,6 +22,16 @@ module PiccoBlog
 
     private
 
+      def self.search(term)
+        posts = self.arel_table
+        query_string = "%#{term}%"
+        param_matches_string =  ->(param){ 
+          posts[param].matches(query_string) 
+        } 
+
+        self.where(param_matches_string.(:title).or(param_matches_string.(:text)))
+      end
+
       def set_author
         self.author = PiccoBlog.author_class.constantize.find(author_id)
       end
