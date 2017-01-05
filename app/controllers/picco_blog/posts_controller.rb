@@ -15,7 +15,8 @@ module PiccoBlog
       else
         @posts = Post.visible.order('id desc')
       end
-      #@posts = @posts.order(created_at: :desc).paginate(page:params[:page], per_page: PiccoBlog.posts_per_page )
+
+      @posts = @posts.page params[:page]
     end
 
     # GET /posts/1

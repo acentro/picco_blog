@@ -35,6 +35,10 @@
     </tbody>
   </table>
 
+  <div id="pagination">
+    <%= paginate @posts %>
+  </div>
+
   <br>
 
   <%= link_to 'New Post', new_post_path %>
