@@ -17,6 +17,7 @@ module PiccoBlog
       end
 
       @posts = @posts.page params[:page]
+      @title = "Blog"
     end
 
     # GET /posts/1
@@ -24,6 +25,7 @@ module PiccoBlog
       if request.path != post_path(@post)
         redirect_to @post, status: :moved_permanently
       end
+      
       @title = @post.title
     end
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PiccoBlog</title>
+  <title><%= "#{@title} - " if @title %>PiccoBlog</title>
   <%= stylesheet_link_tag    "picco_blog/application", media: "all" %>
   <%= javascript_include_tag "picco_blog/application" %>
   <%= csrf_meta_tags %>
