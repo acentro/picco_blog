@@ -14,11 +14,15 @@
   <p>
     <strong>Text:</strong>
     <% if PiccoBlog.members_only %>
-      <% if user_signed_in? && members_only_check(current_user) %>
-        <%= markdown @post.text %>
+      <% if @post.members_only %>
+        <% if user_signed_in? && members_only_check(current_user) %>
+          <%= markdown @post.text %>
+        <% else %>
+          <%= render "members_only", :post => @post %>
+        <% end -%>
       <% else %>
-        <%= render "members_only", :post => @post %>
-      <% end -%>
+        <%= markdown @post.text %>
+      <% end %>
     <% else %>
       <%= markdown @post.text %>
     <% end -%>
