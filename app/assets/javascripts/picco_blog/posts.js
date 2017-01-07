@@ -20,6 +20,8 @@ $('textarea.picco_blog_editor').each(function() {
     simplemde.render(); 
 });
 
-$("#post_tag_list").tagit({
-    availableTags: available_tags
-});
+if($("#post_tag_list").length) {
+  $("#post_tag_list").tagit({
+      availableTags: available_tags
+  });
+}

@@ -45,6 +45,4 @@
   </div>
 <% end %>
 
-<script type="text/javascript">
-  var available_tags = <%= @available_tags %>
-</script>
+<%= javascript_tag "var available_tags = #{@available_tags.to_json.html_safe};" %>
