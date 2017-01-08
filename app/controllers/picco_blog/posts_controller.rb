@@ -5,6 +5,7 @@ module PiccoBlog
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :set_recent_posts, only: [:index, :show]
     before_action :set_tags_all, only: [:create, :edit, :index, :show]
+    before_action :authenticate, except: [:index, :show]
 
     # GET /posts
     def index
@@ -76,6 +77,10 @@ module PiccoBlog
 
       def set_tags_all
         @available_tags = ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'tags').collect { |tagging| "#{tagging.tag.name}" }.uniq
+      end
+
+      def authenticate
+        redirect_to root_url unless eval(PiccoBlog.current_user).send(PiccoBlog.authenticate)
       end
 
       # Only allow a trusted parameter "white list" through.

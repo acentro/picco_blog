@@ -7,10 +7,7 @@ module PiccoBlog
   class << self
     mattr_accessor :author_class, :include_comments, :include_share_bar, :recent_posts
     mattr_accessor :posts_per_page, :layout, :post_tagging, :members_only, :members_only_method 
-
-    # def self.author_class
-    #   @@author_class.constantize
-    # end
+    mattr_accessor :current_user, :authenticate
   end
 
   self.include_comments = ""
@@ -21,6 +18,8 @@ module PiccoBlog
   self.post_tagging = ""
   self.members_only = ""
   self.members_only_method = ""
+  self.current_user = ""
+  self.authenticate = ""
 
   def self.setup(&block)
     yield self

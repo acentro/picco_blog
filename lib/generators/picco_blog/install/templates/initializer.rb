@@ -1,15 +1,22 @@
 PiccoBlog.setup do |config|
 
-  # overwrite this with the user model that will be tied to each blog post
+  # override this with the user model that will be tied to each blog post
   # defaults to User model
   config.author_class = "User"
 
   # Will your blog have member only posts? 
   config.members_only = false
 
-  # If true, overwrite this with the method name on the member class
+  # If true, override this with the method name on the member class
   # method name defaults to "members_only" and should return boolean (true/false)
   config.members_only_method = "members_only"
+
+  # Override with the current logged in user variable name
+  config.current_user = "current_user"
+
+  # Override with the authenticate method name on the "current_user" class
+  # used to allow access to create, edit, update, delete actions
+  config.authenticate = "picco_blog_authenticate"
 
   # What kind of comments do you want to add to your blog ? (:active_record or :no)
   # Disqus comments will be added in future
