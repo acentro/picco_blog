@@ -4,7 +4,7 @@ module PiccoBlog
   class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :set_recent_posts, only: [:index, :show]
-    before_action :set_tags_all, only: [:create, :edit, :index, :show]
+    before_action :set_tags_all, except: [:create, :update, :destroy]
     before_action :authenticate, except: [:index, :show]
 
     # GET /posts
