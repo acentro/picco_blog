@@ -21,6 +21,11 @@ module PiccoBlog
       @title = "Blog"
     end
 
+    def admin_list
+      @posts = Post.all.order('id desc')
+      @posts = @posts.page params[:page]
+    end
+
     # GET /posts/1
     def show
       if request.path != post_path(@post)
