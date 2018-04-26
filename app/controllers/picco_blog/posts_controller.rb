@@ -33,6 +33,7 @@ module PiccoBlog
       end
       
       @title = @post.title
+      @meta_description = @post.excerpt.truncate(300).strip
     end
 
     # GET /posts/new
