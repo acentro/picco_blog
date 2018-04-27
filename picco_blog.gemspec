@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id', '~> 5.1.0'
   s.add_dependency 'redcarpet'
   s.add_dependency 'dragonfly', '~> 1.1.1'
+  s.add_dependency 'mime-types'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency 'minitest' 
