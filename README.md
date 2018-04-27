@@ -29,6 +29,22 @@ And then execute:
 $ bundle install
 ```
 
+Generate the install files (migrations and initializer)
+```
+$ rails generate picco_blog:install
+```
+
+Run migrations
+```
+$ rake db:migrate
+```
+
+If you want to override the default ERB views (most likely you do)
+```
+$ rails generate picco_blog:views
+```
+
+
 
 
 ## Copyright
