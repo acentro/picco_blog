@@ -16,6 +16,7 @@ PiccoBlog is a simple and light weight markdown blog engine for Ruby on Rails (v
 
 #### Dependencies:
 - [SimpleMDE v1.11.2 Markdown Editor Library](https://simplemde.com)
+- JQuery
 
 ## Installation
 
@@ -49,7 +50,8 @@ Add to `config/routes.rb`
 mount PiccoBlog::Engine => "/blog"
 ```
 
-Include the PiccoBlog Javascript and CSS Assets. Note that Jquery is required to be loaded first!
+Include the PiccoBlog Javascript and CSS Assets. Note: JQuery is required to be loaded first!
+
 Add to `assets/javascripts/application.js`
 ```
 //= require picco_blog/application
