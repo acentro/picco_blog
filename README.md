@@ -1,4 +1,4 @@
-= PiccoBlog
+# PiccoBlog
 
 PiccoBlog is a simple and light weight markdown blog engine for Ruby on Rails (v4.2.4+) applications. 
 
