@@ -44,7 +44,14 @@ If you want to override the default ERB views (most likely you do)
 $ rails generate picco_blog:views
 ```
 
+Add to `routes.rb`
+```
+mount PiccoBlog::Engine => "/blog"
+```
 
+Done!
+
+## Configuation
 
 
 ## Copyright
