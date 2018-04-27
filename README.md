@@ -44,7 +44,7 @@ If you want to override the default ERB views (most likely you do)
 $ rails generate picco_blog:views
 ```
 
-Add to `routes.rb`
+Add to `config/routes.rb`
 ```
 mount PiccoBlog::Engine => "/blog"
 ```
@@ -53,6 +53,11 @@ Done!
 
 ## Configuation
 
+#### Initializer
+The default initializer was copied to `config/initializers/picco_blog.rb`. Each configurable option is commented in the file. 
+
+#### Dependency gems
+By default, Dragonfly and Friendly ID gems are utilized. To override these configurations, create `config/dragonfly.rb` and `config/friendly_id.rb` initializers.
 
 ## Copyright
 This project rocks and uses MIT-LICENSE.
