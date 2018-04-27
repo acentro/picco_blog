@@ -49,6 +49,18 @@ Add to `config/routes.rb`
 mount PiccoBlog::Engine => "/blog"
 ```
 
+Include the PiccoBlog Javascript and CSS Assets. Note that Jquery is required to be loaded first!
+Add to `assets/javascripts/application.js`
+```
+//= require picco_blog/application
+```
+
+Add to `assets/stylesheets/application.css`
+```
+ *= require picco_blog/application
+```
+
+
 Done!
 
 ## Configuation
