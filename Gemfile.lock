@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    picco_blog (1.0.2.beta)
+    picco_blog (1.0.3.beta)
       acts-as-taggable-on
       dragonfly (~> 1.1.1)
       friendly_id (~> 5.1.0)
@@ -93,11 +93,11 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
     mini_mime (1.0.0)
-    mini_portile2 (2.0.0)
+    mini_portile2 (2.3.0)
     minitest (5.9.0)
     multi_json (1.13.1)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
