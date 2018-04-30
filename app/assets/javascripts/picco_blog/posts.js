@@ -4,6 +4,11 @@ $(document).ready(function() {
   $('textarea.picco_blog_editor').each(function() {
       var simplemde = new SimpleMDE({
           element: this,
+          autosave: {
+            enabled: true,
+            uniqueId: Math.random().toString(36).substr(2, 36),
+            delay: 1000,
+          },
           toolbar: [
             "bold", "italic", "heading", "strikethrough", "|",
             "quote", "unordered-list", "ordered-list", "|",
