@@ -6,7 +6,7 @@ $(document).ready(function() {
           element: this,
           autosave: {
             enabled: true,
-            uniqueId: "picco_blog_" + this.attr('id'),
+            uniqueId: "picco_blog_" + this.getAttribute('id'),
             delay: 1000,
           },
           toolbar: [
