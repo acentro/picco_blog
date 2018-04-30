@@ -6,7 +6,7 @@ $(document).ready(function() {
           element: this,
           autosave: {
             enabled: true,
-            uniqueId: Math.random().toString(36).substr(2, 36),
+            uniqueId: "picco_blog_" + this.attr('id'),
             delay: 1000,
           },
           toolbar: [
