@@ -20,9 +20,9 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 4.2.4"
   s.add_dependency 'acts-as-taggable-on'
   s.add_dependency 'kaminari'
-  s.add_dependency 'friendly_id', '~> 5.1.0'
+  s.add_dependency 'friendly_id', '>= 5.1.0'
   s.add_dependency 'redcarpet'
-  s.add_dependency 'dragonfly', '~> 1.1.1'
+  s.add_dependency 'dragonfly', '>= 1.1.1'
   s.add_dependency 'mime-types'
 
   s.add_development_dependency "sqlite3"
