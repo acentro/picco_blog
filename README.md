@@ -12,6 +12,8 @@ PiccoBlog is a simple and light weight markdown blog engine for Ruby on Rails (v
 - Hidden/Visible state
 
 #### TODO:
+- Enable autosave feature
+- Integrate complete test suite
 - Comments are not fully impemented (ActiveRecord or other)
 
 #### Dependencies:
@@ -22,7 +24,7 @@ PiccoBlog is a simple and light weight markdown blog engine for Ruby on Rails (v
 
 Add this line to your application's Gemfile:
 ```Ruby
-gem 'picco_blog', :git => 'https://github.com/acentro/picco_blog'
+gem 'picco_blog'
 ```
 
 And then execute:
