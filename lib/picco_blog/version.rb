@@ -1,3 +1,3 @@
 module PiccoBlog
-  VERSION = "1.0.4.beta"
+  VERSION = "1.4.1"
 end
