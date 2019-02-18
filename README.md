@@ -64,7 +64,6 @@ Add to `assets/stylesheets/application.css`
  *= require picco_blog/application
 ```
 
-
 Done!
 
 ## Configuation
@@ -81,8 +80,7 @@ Please use the [issue tracker](https://github.com/acentro/picco_blog/issues) if 
 ## Change Log
 Changes are listed in [CHANGELOG.md](https://github.com/acentro/picco_blog/blob/master/CHANGELOG.md)
 
-## Credits
+## Credits & Copyright
 [Brandon Bango](https://github.com/brandonbango) - Author
 
-## Copyright
 This project rocks and uses MIT-LICENSE.
