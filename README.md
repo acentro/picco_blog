@@ -1,5 +1,7 @@
 # PiccoBlog
 
+[![Gem Version](https://badge.fury.io/rb/picco_blog.svg)](https://badge.fury.io/rb/picco_blog)
+
 PiccoBlog is a simple and light weight markdown blog engine for Ruby on Rails (v4.2.4+) applications. 
 
 #### Basic functionality includes:
