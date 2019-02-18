@@ -75,5 +75,14 @@ The default initializer was copied to `config/initializers/picco_blog.rb`. Each 
 #### Dependency gems
 By default, Dragonfly and Friendly ID gems are utilized. To override these configurations, create `config/initializers/dragonfly.rb` and `config/initializers/friendly_id.rb` initializers.
 
+## Issues
+Please use the [issue tracker](https://github.com/acentro/picco_blog/issues) if you have any issues.
+
+## Change Log
+Changes are listed in [CHANGELOG.md](https://github.com/acentro/picco_blog/blob/master/CHANGELOG.md)
+
+## Credits
+[Brandon Bango](https://github.com/brandonbango) - Author
+
 ## Copyright
 This project rocks and uses MIT-LICENSE.
