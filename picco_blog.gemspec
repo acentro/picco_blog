@@ -9,9 +9,8 @@ Gem::Specification.new do |s|
   s.version     = PiccoBlog::VERSION
   s.authors     = ["Brandon Bango"]
   s.email       = ["brandon@acentrosys.com"]
-  s.homepage    = "http://www.acentrosys.com"
-  s.summary     = "PiccoBlog is a simple and light weight Ruby on Rails blog engine."
-  #s.description = "TODO: Description of PiccoBlog."
+  s.homepage    = "https://github.com/acentro/picco_blog"
+  s.summary     = "PiccoBlog is a simple Ruby on Rails markdown blog engine."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

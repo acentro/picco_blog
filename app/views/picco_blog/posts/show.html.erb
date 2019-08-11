@@ -2,8 +2,8 @@
 
 <div>
 
-  <% if post.featured_image_stored? %>
-    <%= link_to image_tag(post.featured_image.thumb('847x300#').url, :class => "mb24"), post_path(post) %>
+  <% if @post.featured_image_stored? %>
+    <%= link_to image_tag(@post.featured_image.thumb('847x300#').url, :class => "mb24"), post_path(@post) %>
   <% end %>
 
   <p>
