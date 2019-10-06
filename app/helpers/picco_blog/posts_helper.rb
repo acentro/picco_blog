@@ -10,15 +10,15 @@ module PiccoBlog
       post.created_at.strftime(format)
     end
 
-    def post_preview(post, continue_link=true)
+    def post_preview(post, continue_link=true, length=250)
       preview = ""
       unless nil_or_empty(post.excerpt)
         preview = strip_tags(markdown(post.excerpt))
       else
-        preview = truncate(strip_tags(markdown(post.text)), length: 250)
+        preview = truncate(strip_tags(markdown(post.text)), length: length)
       end
 
-      preview += " " + link_to("Continue Reading", post_path(post)) if continue_link
+      preview += " " + link_to("Continue Reading", picco_blog.post_path(post)) if continue_link
       preview.html_safe 
     end
 
