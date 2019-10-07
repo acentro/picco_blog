@@ -1,4 +1,4 @@
-# PiccoBlog
+![PiccoBlog Logo](https://acentrosys.com/img/piccoblog-b.png)
 
 [![Gem Version](https://badge.fury.io/rb/picco_blog.svg)](https://badge.fury.io/rb/picco_blog)
 
