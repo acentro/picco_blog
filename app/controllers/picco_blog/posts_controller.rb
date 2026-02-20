@@ -1,11 +1,9 @@
-require_dependency "picco_blog/application_controller"
-
 module PiccoBlog
   class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :set_recent_posts, only: [:index, :show]
     before_action :set_tags_all, except: [:create, :update, :destroy]
-    before_action :authenticate, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show]
 
     # GET /posts
     def index
@@ -85,8 +83,30 @@ module PiccoBlog
         @available_tags = ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'tags').collect { |tagging| "#{tagging.tag.name}" }.uniq
       end
 
-      def authenticate
-        redirect_to root_url unless eval(PiccoBlog.current_user).send(PiccoBlog.authenticate)
+      def picco_blog_current_user
+        if PiccoBlog.current_user_proc
+          instance_exec(&PiccoBlog.current_user_proc)
+        elsif PiccoBlog.current_user.present?
+          # DEPRECATED: String-based config. Use current_user_proc instead.
+          ActiveSupport::Deprecation.warn(
+            "PiccoBlog.current_user (string) is deprecated. Use PiccoBlog.current_user_proc = proc { current_user } instead."
+          )
+          eval(PiccoBlog.current_user)
+        end
+      end
+
+      def authenticate_user!
+        if PiccoBlog.authenticate_proc
+          instance_exec(&PiccoBlog.authenticate_proc)
+        elsif PiccoBlog.current_user.present? && PiccoBlog.authenticate.present?
+          # DEPRECATED: String-based eval config. Use authenticate_proc instead.
+          ActiveSupport::Deprecation.warn(
+            "PiccoBlog.authenticate (string) is deprecated. Use PiccoBlog.authenticate_proc = proc { authenticate_user! } instead."
+          )
+          redirect_to root_url unless eval(PiccoBlog.current_user).send(PiccoBlog.authenticate)
+        else
+          redirect_to root_url
+        end
       end
 
       # Only allow a trusted parameter "white list" through.
