@@ -2,30 +2,30 @@
 
 [![Gem Version](https://badge.fury.io/rb/picco_blog.svg)](https://badge.fury.io/rb/picco_blog)
 
-PiccoBlog is a simple and light weight markdown blog engine for Ruby on Rails (v4.2.4+) applications. 
+PiccoBlog is a simple and light weight markdown blog engine for Ruby on Rails (7.1+) applications.
+
+**Requirements:**
+- Ruby 3.2+
+- Rails 7.1+
 
 #### Basic functionality includes:
 
-- Title, body, exceprt
+- Title, body, excerpt
 - Featured image
 - Tagging
 - Pagination
 - Member's only flag
 - Hidden/Visible state
-
-#### TODO:
-- Enable autosave feature
-- Integrate complete test suite
-- Comments are not fully impemented (ActiveRecord or other)
+- Comments
 
 #### Dependencies:
 - [SimpleMDE v1.11.2 Markdown Editor Library](https://simplemde.com)
-- JQuery
+- jQuery
 
 ## Installation
 
 Add this line to your application's Gemfile:
-```Ruby
+```ruby
 gem 'picco_blog'
 ```
 
@@ -50,11 +50,11 @@ $ rails generate picco_blog:views
 ```
 
 Add to `config/routes.rb`
-```
+```ruby
 mount PiccoBlog::Engine => "/blog"
 ```
 
-Include the PiccoBlog Javascript and CSS Assets. Note: JQuery is required to be loaded first!
+Include the PiccoBlog Javascript and CSS Assets. Note: jQuery is required to be loaded first!
 
 Add to `assets/javascripts/application.js`
 ```
@@ -68,10 +68,34 @@ Add to `assets/stylesheets/application.css`
 
 Done!
 
-## Configuation
+## Configuration
 
 #### Initializer
-The default initializer was copied to `config/initializers/picco_blog.rb`. Each configurable option is commented in the file. 
+The default initializer was copied to `config/initializers/picco_blog.rb`. Each configurable option is commented in the file.
+
+#### Authentication (proc-based)
+
+Configure authentication using procs in your initializer:
+
+```ruby
+PiccoBlog.setup do |config|
+  config.author_class = "User"
+
+  # Authentication — use procs (recommended)
+  config.current_user_proc = proc { current_user }
+  config.authenticate_proc = proc { authenticate_user! }
+
+  # Other options
+  config.posts_per_page = 10
+  config.include_comments = true
+  config.include_share_bar = true
+  config.recent_posts = 5
+  config.post_tagging = true
+  config.layout = "application"  # or nil for engine default
+end
+```
+
+> **Note:** The old string-based `current_user` and `authenticate` config options are deprecated and will be removed in a future version. Please migrate to the proc-based syntax above.
 
 #### Dependency gems
 By default, Dragonfly and Friendly ID gems are utilized. To override these configurations, create `config/initializers/dragonfly.rb` and `config/initializers/friendly_id.rb` initializers.
@@ -79,10 +103,5 @@ By default, Dragonfly and Friendly ID gems are utilized. To override these confi
 ## Issues
 Please use the [issue tracker](https://github.com/acentro/picco_blog/issues) if you have any issues.
 
-## Change Log
-Changes are listed in [CHANGELOG.md](https://github.com/acentro/picco_blog/blob/master/CHANGELOG.md)
-
-## Credits & Copyright
-[Brandon Bango](https://github.com/brandonbango) - Author
-
-This project rocks and uses MIT-LICENSE.
+## License
+MIT License.
