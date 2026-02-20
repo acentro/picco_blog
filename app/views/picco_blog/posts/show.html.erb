@@ -28,10 +28,12 @@
     <% end -%>
   </p>
 
-  <p>
-    <b>Author:</b>
-    <%= @post.author.name %>
-  </p>
+  <% if @post.author.present? %>
+    <p>
+      <b>Author:</b>
+      <%= @post.author.name %>
+    </p>
+  <% end %>
 
   <% if @post.tag_list.any? %>
     <p>

@@ -9,7 +9,9 @@ module PiccoBlog
 
     attr_accessor :author_id
 
-    belongs_to :author, class_name: PiccoBlog.author_class.to_s, optional: true
+    author_opts = { optional: true }
+    author_opts[:class_name] = PiccoBlog.author_class if PiccoBlog.author_class.present?
+    belongs_to :author, **author_opts
     has_many :comments, dependent: :destroy
 
     validates :title, :text, :state, presence: true
