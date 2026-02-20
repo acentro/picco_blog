@@ -21,6 +21,7 @@
 # | `active` | Whether this is the most recently generated slug for the sluggable.                              |
 # | `scope`  | Freeform data scoping this slug to a certain subset of records within the model.                 |
 
+module PiccoBlog
 class Slug < ActiveRecord::Base
   belongs_to :sluggable, polymorphic: true
 
@@ -74,4 +75,6 @@ class Slug < ActiveRecord::Base
     Rails.cache.delete "Slug/#{sluggable_type}/#{sluggable_id}/slug"
     Rails.cache.delete "Slug/#{sluggable_type}/#{sluggable_id}/slug_with_path"
   end
+end
+
 end

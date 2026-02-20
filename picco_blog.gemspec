@@ -13,18 +13,18 @@ Gem::Specification.new do |s|
   s.summary     = "PiccoBlog is a simple Ruby on Rails markdown blog engine."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", ">= 4.2.4"
-  s.add_dependency 'acts-as-taggable-on'
-  s.add_dependency 'kaminari'
-  s.add_dependency 'friendly_id', '>= 5.1.0'
-  s.add_dependency 'redcarpet'
+  s.add_dependency "rails", ">= 7.1", "< 9"
+  s.add_dependency 'acts-as-taggable-on', '>= 10.0'
+  s.add_dependency 'kaminari', '>= 1.2'
+  s.add_dependency 'friendly_id', '~> 5.5'
+  s.add_dependency 'redcarpet', '>= 3.6'
   s.add_dependency 'dragonfly', '>= 1.1.1'
   s.add_dependency 'mime-types'
+  s.add_dependency 'sprockets-rails', '>= 3.4'
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "sqlite3", "~> 1.7"
   s.add_development_dependency 'minitest' 
   s.add_development_dependency 'capybara' 
 end
