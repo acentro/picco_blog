@@ -97,7 +97,11 @@ module PiccoBlog
 
       def authenticate_user!
         if PiccoBlog.authenticate_proc
-          instance_exec(&PiccoBlog.authenticate_proc)
+          # The proc may either perform its own redirect (e.g. Devise's
+          # authenticate_user!) or return a boolean. Deny unless it did one
+          # or the other -- returning false must not fall through as success.
+          authorized = instance_exec(&PiccoBlog.authenticate_proc)
+          redirect_to root_url unless performed? || authorized
         elsif PiccoBlog.current_user.present? && PiccoBlog.authenticate.present?
           # DEPRECATED: String-based eval config. Use authenticate_proc instead.
           ActiveSupport::Deprecation.warn(
