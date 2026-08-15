@@ -24,7 +24,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'mime-types'
   s.add_dependency 'sprockets-rails', '>= 3.4'
 
-  s.add_development_dependency "sqlite3", "~> 1.7"
+  # Rails 8.1's sqlite3 adapter calls `gem "sqlite3", ">= 2.1"` at require time.
+  # That is invisible to Bundler at resolve time, so a `~> 1.7` pin installs
+  # cleanly and then fails at boot with "can't activate sqlite3 (>= 2.1)".
+  s.add_development_dependency "sqlite3", ">= 2.1"
   s.add_development_dependency 'minitest' 
   s.add_development_dependency 'capybara' 
 end
