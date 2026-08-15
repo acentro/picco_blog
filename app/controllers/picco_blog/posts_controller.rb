@@ -83,6 +83,10 @@ module PiccoBlog
         @available_tags = ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'tags').collect { |tagging| "#{tagging.tag.name}" }.uniq
       end
 
+      # Exposed to views so the engine's own templates never call the host
+      # app's current_user directly -- that helper may not exist.
+      helper_method :picco_blog_current_user
+
       def picco_blog_current_user
         if PiccoBlog.current_user_proc
           instance_exec(&PiccoBlog.current_user_proc)

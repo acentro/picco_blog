@@ -15,7 +15,7 @@
     <strong>Text:</strong>
     <% if PiccoBlog.members_only %>
       <% if @post.members_only %>
-        <% if user_signed_in? && members_only_check(current_user) %>
+        <% if picco_blog_current_user && members_only_check(picco_blog_current_user) %>
           <%= markdown @post.text %>
         <% else %>
           <%= render "members_only", :post => @post %>
