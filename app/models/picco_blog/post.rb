@@ -9,9 +9,18 @@ module PiccoBlog
 
     attr_accessor :author_id
 
-    author_opts = { optional: true }
-    author_opts[:class_name] = PiccoBlog.author_class if PiccoBlog.author_class.present?
-    belongs_to :author, **author_opts
+    # Only declare the association when the host app has told us what the
+    # author model is. Declaring it unconditionally makes Rails infer an
+    # `Author` class that does not exist, so even `post.author.present?`
+    # raises "Missing model class Author".
+    if PiccoBlog.author_class.present?
+      belongs_to :author, class_name: PiccoBlog.author_class, optional: true
+    else
+      def author
+        nil
+      end
+    end
+
     has_many :comments, dependent: :destroy
 
     validates :title, :text, :state, presence: true
