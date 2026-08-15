@@ -11,12 +11,16 @@ PiccoBlog.setup do |config|
   # method name defaults to "members_only" and should return boolean (true/false)
   config.members_only_method = "members_only"
 
-  # Override with the current logged in user variable name
-  config.current_user = "current_user"
+  # How the engine finds the logged in user. Evaluated in the controller,
+  # so use proc { } rather than a lambda. Used to decide whether to show
+  # admin links and whether a hidden post may be previewed.
+  config.current_user_proc = proc { current_user }
 
-  # Override with the authenticate method name on the "current_user" class
-  # used to allow access to create, edit, update, delete actions
-  config.authenticate = "picco_blog_authenticate"
+  # Guards create, edit, update and delete. The proc may perform its own
+  # redirect (like Devise's authenticate_user!) or return a boolean --
+  # returning false denies the request. If this is not set, every write
+  # action is denied.
+  config.authenticate_proc = proc { current_user&.admin? }
 
   # What kind of comments do you want to add to your blog ? (:active_record or :no)
   # Disqus comments will be added in future
