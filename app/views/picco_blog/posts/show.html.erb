@@ -47,7 +47,7 @@
     <%= render "sharebuttons", :post => @post %>
   <% end -%>
 
-  <% if PiccoBlog.include_comments == :active_record %>
+  <% if PiccoBlog.comments_enabled? %>
     <hr />
 
     <h3>Comments</h3>

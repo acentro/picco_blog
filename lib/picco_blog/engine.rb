@@ -20,6 +20,17 @@ module PiccoBlog
   mattr_accessor :current_user_proc, default: nil
   mattr_accessor :authenticate_proc, default: nil
 
+  # Comments are ActiveRecord-backed only.
+  #
+  # Accepts `true` or `:active_record` as enabled, and `false`, `nil` or
+  # `:no` as disabled. Both spellings are honoured because the shipped
+  # initializer template has always written `:active_record` while the
+  # README documents `true` -- gating on either one alone silently
+  # disables comments for half of all installs.
+  def self.comments_enabled?
+    [true, :active_record].include?(include_comments)
+  end
+
   def self.setup(&block)
     yield self
   end
