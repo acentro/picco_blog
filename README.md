@@ -6,7 +6,9 @@ PiccoBlog is a simple and light weight markdown blog engine for Ruby on Rails (7
 
 **Requirements:**
 - Ruby 3.2+
-- Rails 7.1+
+- Rails 7.1+ (developed and tested against Rails 8.1; the development
+  bundle is Rails 8.x only, because Rails 8.1 requires `sqlite3 >= 2.1`
+  while Rails 7.1 requires `sqlite3 ~> 1.4`)
 
 #### Basic functionality includes:
 
@@ -87,13 +89,31 @@ PiccoBlog.setup do |config|
 
   # Other options
   config.posts_per_page = 10
-  config.include_comments = true
+  config.include_comments = :active_record  # or :no
   config.include_share_bar = true
   config.recent_posts = 5
-  config.post_tagging = true
+  config.post_tagging = :list
   config.layout = "application"  # or nil for engine default
 end
 ```
+
+Both procs are evaluated in the controller's context, so use `proc { ... }`
+rather than a lambda — a lambda's strict arity makes `instance_exec` raise
+`ArgumentError`.
+
+`authenticate_proc` may either perform its own redirect (as Devise's
+`authenticate_user!` does) or return a boolean. Returning a falsy value
+denies the request:
+
+```ruby
+config.authenticate_proc = proc { current_user&.admin? }
+```
+
+If neither proc is configured, every write action is denied.
+
+`current_user_proc` is what the engine's own views use to decide whether to
+show admin links, and whether an admin may preview a hidden post. Without
+it the engine still works, it just never shows admin UI.
 
 > **Note:** The old string-based `current_user` and `authenticate` config options are deprecated and will be removed in a future version. Please migrate to the proc-based syntax above.
 
