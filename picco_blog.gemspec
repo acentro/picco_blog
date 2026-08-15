@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'redcarpet', '>= 3.6'
   s.add_dependency 'dragonfly', '>= 1.1.1'
   s.add_dependency 'mime-types'
-  s.add_dependency 'sprockets-rails', '>= 3.4'
 
   # Rails 8.1's sqlite3 adapter calls `gem "sqlite3", ">= 2.1"` at require time.
   # That is invisible to Bundler at resolve time, so a `~> 1.7` pin installs
