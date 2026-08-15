@@ -1,9 +1,9 @@
 require 'test_helper'
-require 'generators/install/install_generator'
+require 'generators/picco_blog/install/install_generator'
 
 module PiccoBlog
   class InstallGeneratorTest < Rails::Generators::TestCase
-    tests InstallGenerator
+    tests PiccoBlog::Generators::InstallGenerator
     destination Rails.root.join('tmp/generators')
     setup :prepare_destination
 

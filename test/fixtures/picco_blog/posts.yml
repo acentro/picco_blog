@@ -1,9 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+#
+# state is the `enum :state, { visible: 0, hidden: 1 }` integer column and is
+# validated for presence, so it has to be set here.
 
 one:
-  title: MyString
+  title: First Post
   text: MyText
+  excerpt: First excerpt
+  state: 0
 
 two:
-  title: MyString
+  title: Second Post
   text: MyText
+  excerpt: Second excerpt
+  state: 0
