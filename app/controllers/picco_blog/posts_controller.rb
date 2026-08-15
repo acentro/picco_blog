@@ -72,7 +72,20 @@ module PiccoBlog
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = Post.friendly.find(params[:id])
+        @post = post_scope.friendly.find(params[:id])
+      end
+
+      # Hidden posts must not be readable at their public URL. Every action
+      # other than show has already passed authenticate_user!, so those get
+      # the full scope; show is public and sees visible posts only, unless
+      # the viewer is an admin previewing a draft.
+      #
+      # This deliberately uses picco_blog_current_user rather than the
+      # authenticate proc, because that proc may perform its own redirect
+      # (Devise) and must not be invoked on a public page.
+      def post_scope
+        return Post.all unless action_name == "show"
+        picco_blog_current_user.try(:admin?) ? Post.all : Post.visible
       end
 
       def set_recent_posts
