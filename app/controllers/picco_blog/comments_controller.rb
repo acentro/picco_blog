@@ -1,5 +1,3 @@
-require_dependency "picco_blog/application_controller"
-
 module PiccoBlog
   class CommentsController < ApplicationController
     def create
@@ -11,7 +9,7 @@ module PiccoBlog
      
     private
       def comment_params
-        params.require(:comment).permit(:text)
+        params.require(:comment).permit(:body)
       end
   end
 end

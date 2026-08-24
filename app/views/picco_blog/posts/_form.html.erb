@@ -11,29 +11,36 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :author_id, :value => current_user.id %>
+  <%= f.hidden_field :author_id, :value => picco_blog_current_user&.id %>
 
   <div class="field">
+    <%= f.label :title %>
     <%= f.text_field :title, :placeholder => "Title" %> <br/>
   </div>
   <div class="field">
+    <%= f.label :text, "Content" %>
     <%= f.text_area :text, :class => "picco_blog_editor" %> <br/>
   </div>
   <div class="field">
+    <%= f.label :excerpt %>
     <%= f.text_area :excerpt, :class => "picco_blog_editor" %> <br/>
   </div>
   <div class="field">
+    <%= f.label :state, "Status" %>
     <%= f.select :state, PiccoBlog::Post.states.keys.to_a, { include_blank: "Select" } %>
   </div>
   <% if PiccoBlog.members_only %>
     <div class="field">
       <%= f.check_box :members_only %>
+      <%= f.label :members_only, "Members only" %>
     </div>
   <% end %>
   <div class="field">
+    <%= f.label :tag_list, "Tags" %>
     <%= f.text_field :tag_list, value: @post.tag_list.to_s %> <br/>
   </div>
   <div class="field">
+    <%= f.label :featured_image, "Featured image" %>
     <% if f.object.featured_image_stored? %>
       <%= image_tag f.object.featured_image.thumb('200x100').url, :class => "mb16" %>
     <% end %>

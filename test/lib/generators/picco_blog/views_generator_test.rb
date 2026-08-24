@@ -1,9 +1,9 @@
 require 'test_helper'
-require 'generators/views/views_generator'
+require 'generators/picco_blog/views/views_generator'
 
 module PiccoBlog
   class ViewsGeneratorTest < Rails::Generators::TestCase
-    tests ViewsGenerator
+    tests PiccoBlog::Generators::ViewsGenerator
     destination Rails.root.join('tmp/generators')
     setup :prepare_destination
 

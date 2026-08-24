@@ -5,11 +5,13 @@ source 'https://rubygems.org'
 # development dependencies will be added by default to the :development group.
 gemspec
 
-# Declare any dependencies that are still in development here instead of in
-# your gemspec. These might include edge Rails or gems from your path or
-# Git. Remember to move these dependencies to your gemspec before releasing
-# your gem to rubygems.org.
+# Asset pipeline for the test dummy app only. These are deliberately NOT
+# gemspec dependencies: sprockets-rails cannot coexist with Propshaft, which
+# would make the gem uninstallable in any modern Rails app. Both go away in
+# the Propshaft migration (Phase 4).
+gem 'sprockets-rails'
+gem 'jquery-rails'
 
-# To use a debugger
-# gem 'byebug', group: [:development, :test]
-
+# Web server for the test dummy app, so `bin/rails server` works when you
+# want to click through the engine rather than just run the test suite.
+gem 'puma'

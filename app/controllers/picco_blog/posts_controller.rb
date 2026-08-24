@@ -1,11 +1,9 @@
-require_dependency "picco_blog/application_controller"
-
 module PiccoBlog
   class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :set_recent_posts, only: [:index, :show]
     before_action :set_tags_all, except: [:create, :update, :destroy]
-    before_action :authenticate, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show]
 
     # GET /posts
     def index
@@ -74,7 +72,20 @@ module PiccoBlog
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = Post.friendly.find(params[:id])
+        @post = post_scope.friendly.find(params[:id])
+      end
+
+      # Hidden posts must not be readable at their public URL. Every action
+      # other than show has already passed authenticate_user!, so those get
+      # the full scope; show is public and sees visible posts only, unless
+      # the viewer is an admin previewing a draft.
+      #
+      # This deliberately uses picco_blog_current_user rather than the
+      # authenticate proc, because that proc may perform its own redirect
+      # (Devise) and must not be invoked on a public page.
+      def post_scope
+        return Post.all unless action_name == "show"
+        picco_blog_current_user.try(:admin?) ? Post.all : Post.visible
       end
 
       def set_recent_posts
@@ -85,8 +96,38 @@ module PiccoBlog
         @available_tags = ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'tags').collect { |tagging| "#{tagging.tag.name}" }.uniq
       end
 
-      def authenticate
-        redirect_to root_url unless eval(PiccoBlog.current_user).send(PiccoBlog.authenticate)
+      # Exposed to views so the engine's own templates never call the host
+      # app's current_user directly -- that helper may not exist.
+      helper_method :picco_blog_current_user
+
+      def picco_blog_current_user
+        if PiccoBlog.current_user_proc
+          instance_exec(&PiccoBlog.current_user_proc)
+        elsif PiccoBlog.current_user.present?
+          # DEPRECATED: String-based config. Use current_user_proc instead.
+          ActiveSupport::Deprecation.warn(
+            "PiccoBlog.current_user (string) is deprecated. Use PiccoBlog.current_user_proc = proc { current_user } instead."
+          )
+          eval(PiccoBlog.current_user)
+        end
+      end
+
+      def authenticate_user!
+        if PiccoBlog.authenticate_proc
+          # The proc may either perform its own redirect (e.g. Devise's
+          # authenticate_user!) or return a boolean. Deny unless it did one
+          # or the other -- returning false must not fall through as success.
+          authorized = instance_exec(&PiccoBlog.authenticate_proc)
+          redirect_to root_url unless performed? || authorized
+        elsif PiccoBlog.current_user.present? && PiccoBlog.authenticate.present?
+          # DEPRECATED: String-based eval config. Use authenticate_proc instead.
+          ActiveSupport::Deprecation.warn(
+            "PiccoBlog.authenticate (string) is deprecated. Use PiccoBlog.authenticate_proc = proc { authenticate_user! } instead."
+          )
+          redirect_to root_url unless eval(PiccoBlog.current_user).send(PiccoBlog.authenticate)
+        else
+          redirect_to root_url
+        end
       end
 
       # Only allow a trusted parameter "white list" through.

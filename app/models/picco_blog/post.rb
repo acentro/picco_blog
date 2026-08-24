@@ -9,8 +9,19 @@ module PiccoBlog
 
     attr_accessor :author_id
 
-    belongs_to :author, class_name: PiccoBlog.author_class.to_s
-    has_many :comments
+    # Only declare the association when the host app has told us what the
+    # author model is. Declaring it unconditionally makes Rails infer an
+    # `Author` class that does not exist, so even `post.author.present?`
+    # raises "Missing model class Author".
+    if PiccoBlog.author_class.present?
+      belongs_to :author, class_name: PiccoBlog.author_class, optional: true
+    else
+      def author
+        nil
+      end
+    end
+
+    has_many :comments, dependent: :destroy
 
     validates :title, :text, :state, presence: true
     validates_property :format, of: :featured_image, in: [:jpeg, :jpg, :png], case_sensitive: false,
@@ -18,7 +29,7 @@ module PiccoBlog
 
     before_validation :set_author
 
-    enum state: [:visible, :hidden]
+    enum :state, { visible: 0, hidden: 1 }
 
     private
 
@@ -33,6 +44,7 @@ module PiccoBlog
       end
 
       def set_author
+        return unless author_id.present? && PiccoBlog.author_class.present?
         self.author = PiccoBlog.author_class.constantize.find(author_id)
       end
   end

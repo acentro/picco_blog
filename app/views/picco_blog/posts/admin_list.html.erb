@@ -26,7 +26,7 @@
             <td><%= post.created_at.strftime("%m/%d/%y") %></td>
             <td><%= link_to 'Show', post %></td>
 
-            <% if current_user.try(:admin?) %>
+            <% if picco_blog_current_user.try(:admin?) %>
               <td><%= link_to 'Edit', edit_post_path(post) %></td>
               <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>

@@ -15,7 +15,7 @@
     <strong>Text:</strong>
     <% if PiccoBlog.members_only %>
       <% if @post.members_only %>
-        <% if user_signed_in? && members_only_check(current_user) %>
+        <% if picco_blog_current_user && members_only_check(picco_blog_current_user) %>
           <%= markdown @post.text %>
         <% else %>
           <%= render "members_only", :post => @post %>
@@ -28,10 +28,12 @@
     <% end -%>
   </p>
 
-  <p>
-    <b>Author:</b>
-    <%= @post.author.name %>
-  </p>
+  <% if @post.author.present? %>
+    <p>
+      <b>Author:</b>
+      <%= @post.author.name %>
+    </p>
+  <% end %>
 
   <% if @post.tag_list.any? %>
     <p>
@@ -45,7 +47,7 @@
     <%= render "sharebuttons", :post => @post %>
   <% end -%>
 
-  <% if PiccoBlog.include_comments == :active_record %>
+  <% if PiccoBlog.comments_enabled? %>
     <hr />
 
     <h3>Comments</h3>
