@@ -11,3 +11,7 @@ gemspec
 # the Propshaft migration (Phase 4).
 gem 'sprockets-rails'
 gem 'jquery-rails'
+
+# Web server for the test dummy app, so `bin/rails server` works when you
+# want to click through the engine rather than just run the test suite.
+gem 'puma'
